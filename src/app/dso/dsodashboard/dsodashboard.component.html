@@ -1,0 +1,122 @@
+<div class="form-control" style="height:100%;border-radius:0px;">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4 form-group">
+                <mat-form-field style="width: 80%;">
+                    <mat-label>Divisions</mat-label>
+                    <mat-select   [(ngModel)]="dsoinput.Division">
+                      <mat-option *ngFor="let division of divsionlist" (onSelectionChange)="divisonselected($event,division.Division)" [value]="division.Division">{{division.Division}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+              <div class="col-lg-4 col-md-4 col-sm-4 form-group">
+                  <mat-form-field style="width: 80%;">
+                      <mat-label>Regions</mat-label>  
+                      <mat-select  [(ngModel)]="dsoinput.Region">
+                        <mat-option *ngFor="let regions of regionlist"  [value]="regions.Region">{{regions.Region}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+              </div>
+        </div>
+    <div class="" style="text-align: center;">
+        <button type="button" class="btn btn-success" label="Save" (click)="Loaddsodata(osreport)">Submit</button>
+    </div>
+</div>
+<section class="tablesection" style="display: block;width: 100%;overflow-x: auto;">
+    <table id="ExampleTable"mat-table [dataSource]="regiondata" id="ExampleTable" matSortDisableClear #mytable class="mat-elevation-z8" style="width: 130em;overflow:scroll;">
+        
+      
+        
+        <ng-container matColumnDef="Division">
+          <th mat-header-cell *matHeaderCellDef> Division </th>
+          <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
+        </ng-container>
+        <ng-container matColumnDef="Bangalore">
+            <th mat-header-cell *matHeaderCellDef>Bangalore</th>
+            <td mat-cell *matCellDef="let element"> {{element.Bangalore}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Bangladesh">
+            <th mat-header-cell *matHeaderCellDef> Bangladesh </th>
+            <td mat-cell *matCellDef="let element"> {{element.Bangladesh}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Baroda">
+            <th mat-header-cell *matHeaderCellDef> Baroda </th>
+            <td mat-cell *matCellDef="let element"> {{element.Baroda}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Chennai">
+            <th mat-header-cell *matHeaderCellDef> Chennai </th>
+            <td mat-cell *matCellDef="let element"> {{element.Chennai}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Kochi">
+            <th mat-header-cell *matHeaderCellDef> Kochi </th>
+            <td mat-cell *matCellDef="let element"> {{element.Kochi}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Kolkatta">
+            <th mat-header-cell *matHeaderCellDef> Kolkatta </th>
+            <td mat-cell *matCellDef="let element"> {{element.Kolkatta}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Nagpur">
+            <th mat-header-cell *matHeaderCellDef> Nagpur </th>
+            <td mat-cell *matCellDef="let element"> {{element.Nagpur}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Mumbai">
+            <th mat-header-cell *matHeaderCellDef> Mumbai </th>
+            <td mat-cell *matCellDef="let element"> {{element.Mumbai}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Delhi">
+            <th mat-header-cell *matHeaderCellDef> Delhi </th>
+            <td mat-cell *matCellDef="let element"> {{element.Delhi}} </td>
+          </ng-container>
+        <tr mat-header-row style="background-color: lightsteelblue;" *matHeaderRowDef="displayedColumns1"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+    </table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </section>
+
+    <section class="tablesection" style="display: block;width: 100%;overflow-x: auto;">
+        <table id="ExampleTable"mat-table [dataSource]="divisiondata" id="ExampleTable" matSortDisableClear #mytable class="mat-elevation-z8" style="width: 130em;overflow:scroll;">
+      
+            <ng-container matColumnDef="Region">
+              <th mat-header-cell *matHeaderCellDef> Region </th>
+              <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+            </ng-container>
+            <ng-container matColumnDef="CECI">
+                <th mat-header-cell *matHeaderCellDef>CECI</th>
+                <td mat-cell *matCellDef="let element"> {{element.CECI}} </td>
+              </ng-container>
+              <ng-container matColumnDef="PCI">
+                <th mat-header-cell *matHeaderCellDef> PCI </th>
+                <td mat-cell *matCellDef="let element"> {{element.PCI}} </td>
+              </ng-container>
+              <ng-container matColumnDef="SERVICE">
+                <th mat-header-cell *matHeaderCellDef> SERVICE </th>
+                <td mat-cell *matCellDef="let element"> {{element.SERVICE}} </td>
+              </ng-container>
+              <ng-container matColumnDef="SOLUTION">
+                <th mat-header-cell *matHeaderCellDef> Solution </th>
+                <td mat-cell *matCellDef="let element"> {{element.SOLUTION}} </td>
+              </ng-container>
+              <ng-container matColumnDef="SYSTEMS">
+                <th mat-header-cell *matHeaderCellDef> SYSTEMS </th>
+                <td mat-cell *matCellDef="let element"> {{element.SYSTEMS}} </td>
+              </ng-container>
+              <ng-container matColumnDef="TAS">
+                <th mat-header-cell *matHeaderCellDef> TAS </th>
+                <td mat-cell *matCellDef="let element"> {{element.TAS}} </td>
+              </ng-container>
+              <ng-container matColumnDef="TMI">
+                <th mat-header-cell *matHeaderCellDef> TMI </th>
+                <td mat-cell *matCellDef="let element"> {{element.TMI}} </td>
+              </ng-container>
+              <ng-container matColumnDef="reportdate">
+                <th mat-header-cell *matHeaderCellDef> Reportdate </th>
+                <td mat-cell *matCellDef="let element"> {{element.reportdate}} </td>
+              </ng-container>
+              <!-- <ng-container matColumnDef="Delhi">
+                <th mat-header-cell *matHeaderCellDef> Delhi </th>
+                <td mat-cell *matCellDef="let element"> {{element.Delhi}} </td>
+              </ng-container> -->
+            <tr mat-header-row style="background-color: lightsteelblue;" *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+        </section>

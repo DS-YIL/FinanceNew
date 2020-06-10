@@ -1,0 +1,393 @@
+
+
+    <div class="form-control" style="height:100%;border-radius:0px;">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <label for="docNo" class="form-label">SaleOrder No </label>
+                <input class="form-control"  matTooltip="Use comma to Enter Multiple saleorder" type="text"   [(ngModel)]="osreport.saleordernumber">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <label for="docNo" class="form-label">Document No</label>
+                <input class="form-control" type="text"   [(ngModel)]="osreport.documentnumber">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <label for="docNo" class="form-label">Invoice Number</label>
+                <input class="form-control" type="text" [(ngModel)]="osreport.invoicenumber">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <label for="docNo" class="form-label">Cutomer PO NO</label>
+                <input class="form-control" type="text"   [(ngModel)]="osreport.custpono">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <label for="docNo" class="form-label">Customer Code</label>
+                <input class="form-control" type="text"  [(ngModel)]="osreport.Mcustomercode">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <mat-form-field style="width: 80%;">
+                    <mat-label>Divisions</mat-label>
+                    <mat-select   [(ngModel)]="osreport.division" multiple>
+                      <mat-option *ngFor="let division of divsionlist"  [value]="division.Division">{{division.Division}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <mat-form-field style="width: 80%;">
+                    <mat-label>Regions</mat-label>
+                    <mat-select [(ngModel)]="osreport.region" multiple>
+                      <mat-option *ngFor="let regions of regionlist"  [value]="regions.Region">{{regions.Region}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <mat-form-field style="width: 80%;">
+                    <mat-label>Report Type</mat-label>
+                    <mat-select [(ngModel)]="osreport.reporttype" multiple>
+                        <mat-option *ngFor="let report of reports" [value]="report.value">
+                            {{report.viewValue}}
+                          </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <label for="docNo" class="form-label">ProjectId</label>
+                <input class="form-control" type="text"   [(ngModel)]="osreport.projectid">
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <mat-form-field style="width: 80%;">
+                    <mat-label>CustomerName</mat-label>
+                    <mat-select [(ngModel)]="osreport.customername"  multiple>
+                      <mat-option *ngFor="let customers of customerlist"  [value]="customers.CustomerName">{{customers.CustomerName}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <mat-form-field style="width: 80%;"> 
+                    <mat-label>Project manager</mat-label>
+                    <mat-select [(ngModel)]="osreport.projectmanager"  multiple>
+                      <mat-option *ngFor="let pmlist of pmlist"  [value]="pmlist.ProjectManager">{{pmlist.ProjectManager}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 form-group">
+                <!-- <mat-form-field fxFlexFill>
+                    <mat-label>Choose a date</mat-label>
+                    <input matInput [matDatepicker]="picker" [value]="date.value" placeholder="Date"/>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                </mat-form-field>
+                <mat-datepicker #picker></mat-datepicker> -->
+                <mat-form-field style="width:100%">
+                    <mat-label>Select Year</mat-label>
+                    <select matNativeControl required [ngModel]="osdate.Year" (change)="selectyear($event)">
+                      <option value="2020">2020</option>
+                      <option value="2021">2021</option>
+                      <option value="2019">2019</option>
+                      <option value="2018">2018</option>
+                    </select>
+                  </mat-form-field>
+                  
+
+                  
+                  <mat-form-field style="width:100%">
+                    <mat-label>Select Month</mat-label>
+                    <select matNativeControl required [(ngModel)]="osdate.Month" (change)="selectmonth($event)">
+                      <option value="1"> January</option>
+                      <option value="2">Feburary</option>
+                      <option value="3">March</option>
+                      <option value="4">April</option>
+                      <option value="5">May</option>
+                      <option value="6">June</option>
+                      <option value="7">July</option>
+                      <option value="8">August</option>
+                      <option value="9">September</option>
+                      <option value="10">October</option>
+                      <option value="11">November</option>
+                      <option value="12">December</option>
+                    </select>
+                  </mat-form-field>
+                  
+                  <!-- <mat-form-field class="mr-sm-24" fxFlex >
+                    <input matInput [matDatepicker]="picker" placeholder="Date"
+                                   autocomplete="off"
+                                   name="date" >
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker  [startAt]="date" #picker></mat-datepicker>
+                 </mat-form-field> -->
+            </div>
+        </div>
+        <div class="" style="text-align: center;">
+            <button type="button" class="btn btn-success" label="Save" (click)="Loadreports(osreport)">Submit</button>
+        </div>
+    </div><br>
+
+    <div class="row">
+      <div class="col-12 mat-elevation-z8 mt-3">
+          <div class="text-center">
+              <canvas style="margin-bottom: 20px;" id="CpaStockBarChart"></canvas>
+              <!-- <span *ngIf="loadingChart" class="spinner spinner-border spinner-border-sm mr-1"></span> -->
+          </div>
+      </div>
+  </div>
+
+
+<!-- <highcharts-chart
+   [Highcharts] = "highcharts" 
+   [options] = "chartOptions" 
+   style = "width: 100%; height: 400px; display: block;">
+</highcharts-chart><br> -->
+<!-- <div class="chart-wrapper">
+    <canvas baseChart 
+    [datasets]="barChartData"
+    [labels]="barChartLabels"
+    [options]="barChartOptions"
+    [plugins]="barChartPlugins"
+    [legend]="barChartLegend"
+    [chartType]="barChartType">
+  </canvas>
+</div> -->
+<!-- <div class="col-xs-3 col-md-3 col-sm-3">
+    <label class="form-label">Select Chart Type</label><br />
+    <select class="form-control forms-input" [(ngModel)]="typeofChart" (change)="typeChange()">
+      <option value="funnel">Funnel</option>
+      <option value="bar">Bar</option>
+      <option value="line">Line</option>
+      <option value="pie">Pie</option>
+    </select>
+  </div> -->
+  
+    
+    <!-- <section class="tablesection" style="display: block;width: 100%;overflow-x: auto;">
+    <mat-table [dataSource]="osreportdata" matSortDisableClear #mytable class="mat-elevation-z8" style="width: 100em;overflow:scroll;">
+       
+        <ng-container matColumnDef="Division">
+          <mat-header-cell *matHeaderCellDef> Division </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Division}} </mat-cell>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="INRInvAmt">
+          <mat-header-cell *matHeaderCellDef>INR Inv Amt </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.inrinvoiceamount}} </mat-cell>
+        </ng-container>
+      
+       
+        <ng-container matColumnDef="Collected">
+          <mat-header-cell *matHeaderCellDef> Collected </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.collectedamount}} </mat-cell>
+        </ng-container>
+      
+        
+        <ng-container matColumnDef="INROSAmt">
+          <mat-header-cell *matHeaderCellDef> INROSAmt </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.outstandingamount}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="TDS">
+            <mat-header-cell *matHeaderCellDef> TDS </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.tdsamount}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Retention">
+            <mat-header-cell *matHeaderCellDef> Retention </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.retentionamount}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="NoDue">
+            <mat-header-cell *matHeaderCellDef> NoDue </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.notdue}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Days1to30">
+            <mat-header-cell *matHeaderCellDef> Days1to30 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.days1to30}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Days31to60">
+            <mat-header-cell *matHeaderCellDef> Days31to60 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.days31to60}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Days61to90">
+            <mat-header-cell *matHeaderCellDef> Days61to90 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.days61to90}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Days91to180">
+            <mat-header-cell *matHeaderCellDef> Days91to180 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.days91to180}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Days181to365">
+            <mat-header-cell *matHeaderCellDef> Days181to365 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.days181to365}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Days366to730">
+            <mat-header-cell *matHeaderCellDef> Days366to730 </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.days366to730}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="above730days">
+            <mat-header-cell *matHeaderCellDef> above730days </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.above730days}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Provision">
+            <mat-header-cell *matHeaderCellDef> Provision </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.Division}} </mat-cell>
+          </ng-container>
+      
+        <mat-header-row style="background-color: lightsteelblue;" *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row   *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+    </section> -->
+    <div class="export-container">
+        <button mat-raised-button color="primary" (click)="exportTable()">Export Material Table</button>
+    </div>
+    <section class="tablesection" style="display: block;width: 100%;overflow-x: auto;">
+        <table id="ExampleTable"mat-table [dataSource]="osreportdata" id="ExampleTable" matSortDisableClear #mytable class="mat-elevation-z8" style="width: 188em;overflow:scroll;">
+            <!-- Position Column -->
+
+            <ng-container matColumnDef="Region">
+                <th mat-header-cell *matHeaderCellDef> Region </th>
+                <td mat-cell *matCellDef="let element"> {{element.Region}} </td>
+              </ng-container>
+              
+            <ng-container matColumnDef="Division">
+              <th mat-header-cell *matHeaderCellDef> Division </th>
+              <td mat-cell *matCellDef="let element"> {{element.Division}} </td>
+            </ng-container>
+          
+            <!-- Name Column -->
+            <ng-container matColumnDef="salesoffice">
+              <th mat-header-cell *matHeaderCellDef>SalesOffice</th>
+              <td mat-cell *matCellDef="let element"> {{element.salesoffice}} </td>
+            </ng-container>
+          
+            <!-- Weight Column -->
+            <ng-container matColumnDef="CustomerCode">
+              <th mat-header-cell *matHeaderCellDef> CustomerCode </th>
+              <td mat-cell *matCellDef="let element"> {{element.CustomerCode}} </td>
+            </ng-container>
+          
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="docno">
+              <th mat-header-cell *matHeaderCellDef> DocNo </th>
+              <td mat-cell *matCellDef="let element"> {{element.docno}} </td>
+            </ng-container>
+            <ng-container matColumnDef="postingdate">
+                <th mat-header-cell *matHeaderCellDef> Posting Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.postingdate}} </td>
+              </ng-container>
+              <ng-container matColumnDef="YilSono">
+                <th mat-header-cell *matHeaderCellDef> YilSono </th>
+                <td mat-cell *matCellDef="let element"> {{element.YilSono}} </td>
+              </ng-container>
+              <ng-container matColumnDef="pono">
+                <th mat-header-cell *matHeaderCellDef> PoNo </th>
+                <td mat-cell *matCellDef="let element"> {{element.pono}} </td>
+              </ng-container>
+              <ng-container matColumnDef="wbselement">
+                <th mat-header-cell *matHeaderCellDef> WBS </th>
+                <td mat-cell *matCellDef="let element"> {{element.wbselement}} </td>
+              </ng-container>
+              <!-- <ng-container matColumnDef="ProjectName">
+                <mat-header-cell *matHeaderCellDef> WBS/ProjectName </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.days31to60}} </mat-cell>
+              </ng-container> -->
+              <ng-container matColumnDef="Projectmanager">
+                <th mat-header-cell *matHeaderCellDef> ProjectManager </th>
+                <td mat-cell *matCellDef="let element"> {{element.Projectmanager}} </td>
+              </ng-container>
+              <ng-container matColumnDef="InvoiceNo">
+                <th mat-header-cell *matHeaderCellDef> InvoiceNo </th>
+                <td mat-cell *matCellDef="let element"> {{element.InvoiceNo}} </td>
+              </ng-container>
+              <ng-container matColumnDef="invoicedate">
+                <th mat-header-cell *matHeaderCellDef> InvoiceDate </th>
+                <td mat-cell *matCellDef="let element"> {{element.invoicedate}} </td>
+              </ng-container>
+              <ng-container matColumnDef="docinvoiceamount">
+                <th mat-header-cell *matHeaderCellDef> DocInvoiceAmount </th>
+                <td mat-cell *matCellDef="let element"> {{element.docinvoiceamount}} </td>
+              </ng-container>
+              <ng-container matColumnDef="invoiceCurrancy">
+                <th mat-header-cell *matHeaderCellDef> InvoiceCurrency </th>
+                <td mat-cell *matCellDef="let element"> {{element.invoiceCurrancy}} </td>
+              </ng-container>
+              <ng-container matColumnDef="INRInvAmt">
+                <th mat-header-cell *matHeaderCellDef> INRInvAmt </th>
+                <td mat-cell *matCellDef="let element"> {{element.inrinvoiceamount}} </td>
+              </ng-container>
+              <ng-container matColumnDef="DocOutstandingAmount">
+                <th mat-header-cell *matHeaderCellDef> DocOutstandingAmount </th>
+                <td mat-cell *matCellDef="let element"> {{element.DocOutstandingAmount}} </td>
+              </ng-container>
+              <ng-container matColumnDef="DocOSCurrency">
+                <th mat-header-cell *matHeaderCellDef> DocOSCurrency </th>
+                <td mat-cell *matCellDef="let element"> {{element.DocOSCurrency}} </td>
+              </ng-container>
+              <ng-container matColumnDef="outstandingamount">
+                <th mat-header-cell *matHeaderCellDef> INROSAmt </th>
+                <td mat-cell *matCellDef="let element"> {{element.outstandingamount}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Collected">
+                <th mat-header-cell *matHeaderCellDef> Collected </th>
+                <td mat-cell *matCellDef="let element"> {{element.CollectedAmount}} </td>
+              </ng-container>
+              <ng-container matColumnDef="tdsamount">
+                <th mat-header-cell *matHeaderCellDef> TDS </th>
+                <td mat-cell *matCellDef="let element"> {{element.tdsamount}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Retention">
+                <th mat-header-cell *matHeaderCellDef> Retention </th>
+                <td mat-cell *matCellDef="let element"> {{element.retentionamount}} </td>
+              </ng-container>
+              <ng-container matColumnDef="notdue">
+                <th mat-header-cell *matHeaderCellDef> NoDue </th>
+                <td mat-cell *matCellDef="let element"> {{element.notdue}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Days1to30">
+                <th mat-header-cell *matHeaderCellDef> Days1to30 </th>
+                <td mat-cell *matCellDef="let element"> {{element.days1to30}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Days31to60">
+                <th mat-header-cell *matHeaderCellDef> days31to60 </th>
+                <td mat-cell *matCellDef="let element"> {{element.days31to60}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Days61to90">
+                <th mat-header-cell *matHeaderCellDef> days61to90 </th>
+                <td mat-cell *matCellDef="let element"> {{element.days61to90}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Days91to180">
+                <th mat-header-cell *matHeaderCellDef> Days91to180 </th>
+                <td mat-cell *matCellDef="let element"> {{element.days91to180}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Days181to365">
+                <th mat-header-cell *matHeaderCellDef> Days181to365 </th>
+                <td mat-cell *matCellDef="let element"> {{element.days181to365}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Days366to730">
+                <th mat-header-cell *matHeaderCellDef> Days366to730 </th>
+                <td mat-cell *matCellDef="let element"> {{element.days366to730}} </td>
+              </ng-container>
+              <ng-container matColumnDef="above730days">
+                <th mat-header-cell *matHeaderCellDef> above730days </th>
+                <td mat-cell *matCellDef="let element"> {{element.above730days}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Provision">
+                <th mat-header-cell *matHeaderCellDef> Provision </th>
+                <td mat-cell *matCellDef="let element"> {{element.Provision}} </td>
+              </ng-container>
+              <ng-container matColumnDef="Remarks">
+                <th mat-header-cell *matHeaderCellDef> Remarks </th>
+                <td mat-cell *matCellDef="let element"> {{element.Remarks}} </td>
+              </ng-container>
+              <ng-container matColumnDef="ActionBy">
+                <th mat-header-cell *matHeaderCellDef> ActionBy </th>
+                <td mat-cell *matCellDef="let element"> {{element.ActionBy}} </td>
+              </ng-container>
+            <!-- <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td mat-cell *matCellDef="let element" class="action-link"> 
+                  <a (click)="openDialog('Delete',element)">Delete</a>  
+                </td>
+              </ng-container> -->
+            <tr mat-header-row style="background-color: lightsteelblue;" *matHeaderRowDef="displayedColumns1"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
+        </table>
+          <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+        </section>

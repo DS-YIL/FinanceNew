@@ -1,0 +1,67 @@
+
+<div class="container">
+ <div class="row">
+    <div class="col-md-4">
+        <!-- <mat-form-field>
+            <mat-label>Select Type</mat-label>
+            <mat-select  [value]="filevalue">
+                <mat-option value="ARR">ARR</mat-option>
+                <mat-option value="Sales">Sales</mat-option>
+                <mat-option value="Advance">Advance</mat-option>
+            </mat-select>
+        </mat-form-field> -->
+        <mat-form-field style="width:100%">
+            <mat-label>Select Type</mat-label>
+            <select matNativeControl [(ngModel)]="documents.DocumentName">
+              <option value="" selected></option>
+              <option value="ARR">ARR</option>
+              <option value="Sales">SALES</option>
+              <option value="Advance">ADVANCE</option>
+              <option value="ALL">ALL</option>
+            </select>
+          </mat-form-field>
+    </div>&nbsp;&nbsp;&nbsp;&nbsp;
+    <div class="col-md-6">
+        <label class="form-label">File:</label>
+        <input type="file" class="form-control" id="uploadInputFile" (change)="fileChange($event,'itemDetails')" placeholder="Upload file" accept=".msg,.pdf,.doc,.docx,.xlsx,.xls" multiple>
+    </div>
+   </div>
+    <br>
+    <mat-form-field>
+        <mat-label>Filter</mat-label>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Ex. ium">
+    </mat-form-field>
+    <mat-table [dataSource]="getdocuments" #mytable class="mat-elevation-z8" style="width: 100%;">
+        <!-- Position Column -->
+        <ng-container matColumnDef="FileNo">
+          <mat-header-cell *matHeaderCellDef> File No. </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.FileNo}} </mat-cell>
+        </ng-container>
+      
+        <!-- Name Column -->
+        <ng-container matColumnDef="FileName">
+          <mat-header-cell *matHeaderCellDef>File Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.FileName}} </mat-cell>
+        </ng-container>
+      
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Uploaded_By">
+          <mat-header-cell *matHeaderCellDef> Uploaded By </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.Uploaded_By}} </mat-cell>
+        </ng-container>
+      
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="System_Date">
+          <mat-header-cell *matHeaderCellDef> System Date </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{element.System_Date}} </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element" class="action-link"> 
+              <a (click)="openDialog('Delete',element)">Delete</a>  
+            </td>
+          </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row   *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+</div>  

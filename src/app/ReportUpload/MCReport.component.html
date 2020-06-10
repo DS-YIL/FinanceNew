@@ -1,0 +1,69 @@
+<div class="m-2">
+  <table class="table table-striped table-bordered mb-3 p-1">
+    <thead style="font-weight: 200;font-size: small;">
+      <tr class="mx-auto">
+        <th scope="col">Division</th>
+        <th scope="col" style="min-width: 150px;">Month</th>
+        <th scope="col">Total AR</th>
+        <th scope="col">NotDue</th>
+        <th scope="col">Retention</th>
+        <th scope="col">Collectable</th>
+        <th scope="col">1-30 Days</th>
+        <th scope="col">31-60 Days</th>
+        <th scope="col">61-90 Days</th>
+        <th scope="col">91-180 Days</th>
+        <th scope="col">181-365 Days</th>
+        <th scope="col">365-730 Days</th>
+        <th scope="col">Above 730 Days</th>
+        <th scope="col">Provision</th>
+      </tr>
+    </thead>
+    <tbody style="font-size: small;">
+      <tr *ngFor='let item of mcdata | keyvalue'>
+        <td>
+          <button mat-raised-button (click)="openDialog(item.key)">{{item.key}}</button>
+        </td>
+        <td>
+      <tr style="padding: 0%;" *ngFor='let obj of item.value' >{{obj.oSdate | date}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.OSAMt | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.notDue | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.retention | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.collectable | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.days1to30 | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.days31to60 | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.days61to90 | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.days91to180 | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.days181to365 | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.days366to730 | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.above730days | number}}</tr>
+      </td>
+      <td>
+        <tr *ngFor='let obj of item.value'>{{obj.Provision | number}}</tr>
+      </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
